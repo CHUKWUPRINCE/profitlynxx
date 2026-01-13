@@ -185,6 +185,17 @@ def deposit(request):
                 'incentive_description': 'Capital Will Back: Yes',
                 'is_active': True,
                 'capital_return': True
+            },
+            {
+                'name': 'TRIPLE_STAKE',
+                'roi_percentage': Decimal('200.00'),
+                'duration_days': 42,
+                'min_investment': Decimal('500.00'),
+                'max_investment': Decimal('100000000.00'),
+                'referral_bonus': Decimal('5.00'),
+                'incentive_description': '✓ $500 👉👉 $1,500 profit in 1-2 weeks\n✓ $1,000 👉👉 $3,000 profit in 1-2 weeks\n✓ $2,000 👉👉 $6,000 profit in 1-2 weeks\n✓ $5,000 👉👉 $15,000 profit in 1-2 weeks\n✓ $50,000 👉👉 $150,000 profit in 1-2 weeks\nTOTAL PROFITABILITY - 6 WEEKS',
+                'is_active': True,
+                'capital_return': True
             }
         ]
         

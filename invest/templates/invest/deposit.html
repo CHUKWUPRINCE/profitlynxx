@@ -81,6 +81,18 @@
                                                         <p class="mb-1"><strong>Duration:</strong> 2 DAYS</p>
                                                         <p class="mb-1"><strong>Referral Bonus:</strong> 3%</p>
                                                     </div>
+                                                {% elif tier.name == 'TRIPLE_STAKE' %}
+                                                    <div class="tier-badge mb-2">TRIPLE_STAKE</div>
+                                                    <h4 class="tier-roi mb-2">TOTAL PROFITABILITY - 6 WEEKS</h4>
+                                                    <div class="tier-details text-start">
+                                                        <p class="mb-1">✓ $500 👉👉 $1,500 profit in 1-2 weeks</p>
+                                                        <p class="mb-1">✓ $1,000 👉👉 $3,000 profit in 1-2 weeks</p>
+                                                        <p class="mb-1">✓ $2,000 👉👉 $6,000 profit in 1-2 weeks</p>
+                                                        <p class="mb-1">✓ $5,000 👉👉 $15,000 profit in 1-2 weeks</p>
+                                                        <p class="mb-1">✓ $50,000 👉👉 $150,000 profit in 1-2 weeks</p>
+                                                        <p class="mb-1">Duration: 6 Weeks</p>
+                                                        <p class="mb-1">Referral Bonus: 5%</p>
+                                                    </div>
                                                 {% else %}
                                                     <div class="tier-badge mb-2">{{ tier.name|title }} Plan</div>
                                                     <h4 class="tier-roi mb-2">{{ tier.roi_percentage }}% TOTAL ROI</h4>
