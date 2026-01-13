@@ -45,20 +45,58 @@
                                         <input type="radio" class="btn-check" name="investment_tier" id="{{ tier.name|lower }}" value="{{ tier.name|lower }}">
                                         <label class="btn btn-outline-dark tier-label w-100 h-100" for="{{ tier.name|lower }}">
                                             <div class="p-3 text-center">
-                                                <div class="tier-badge mb-2">{{ tier.name }} Plan</div>
-                                                <h4 class="tier-roi mb-2">{{ tier.roi_percentage }}% TOTAL ROI</h4>
-                                                <div class="tier-details text-start">
-                                                    <p class="mb-1"><strong>Duration:</strong> {{ tier.duration_days }} days</p>
-                                                    <p class="mb-1"><strong>Min Amount:</strong> ${{ tier.min_investment|floatformat:0 }}</p>
-                                                    {% if tier.max_investment %}
-                                                    <p class="mb-1"><strong>Max Amount:</strong> ${{ tier.max_investment|floatformat:0 }}</p>
-                                                    {% else %}
-                                                    <p class="mb-1"><strong>Max Amount:</strong> Unlimited</p>
-                                                    {% endif %}
-                                                    <p class="mb-1"><strong>Referral Bonus:</strong> {{ tier.referral_bonus }}%</p>
-                                                    <p class="mb-1 text-success">Profit Every {{ tier.duration_days }} Days</p>
-                                                    <p class="mb-0 text-success">{{ tier.incentive_description }}</p>
-                                                </div>
+                                                {% if tier.name == 'BASIC_PLAN' or tier.name == 'BASIC' %}
+                                                    <div class="tier-badge mb-2">BASIC PLAN</div>
+                                                    <h4 class="tier-roi mb-2">DAILY CASH BACK - 10%</h4>
+                                                    <div class="tier-details text-start">
+                                                        <p class="mb-1"><strong>Investment Range:</strong> $100 - $4,999</p>
+                                                        <p class="mb-1"><strong>Total Profitability:</strong> 10%</p>
+                                                        <p class="mb-1"><strong>Duration:</strong> 24 HOURS</p>
+                                                        <p class="mb-1"><strong>Referral Bonus:</strong> 3%</p>
+                                                    </div>
+                                                {% elif tier.name == 'PROFESSIONAL_PLAN' or tier.name == 'PROFESSIONAL' %}
+                                                    <div class="tier-badge mb-2">PROFESSIONAL PLAN</div>
+                                                    <h4 class="tier-roi mb-2">DAILY PROFIT - 15%</h4>
+                                                    <div class="tier-details text-start">
+                                                        <p class="mb-1"><strong>Investment Range:</strong> $5,000 - $14,999</p>
+                                                        <p class="mb-1"><strong>Total Profitability:</strong> 35%</p>
+                                                        <p class="mb-1"><strong>Duration:</strong> 3 DAYS</p>
+                                                        <p class="mb-1"><strong>Referral Bonus:</strong> 3%</p>
+                                                    </div>
+                                                {% elif tier.name == 'BUSINESS_PLAN' or tier.name == 'BUSINESS' %}
+                                                    <div class="tier-badge mb-2">BUSINESS PLAN</div>
+                                                    <h4 class="tier-roi mb-2">DAILY PROFITABILITY - 20%</h4>
+                                                    <div class="tier-details text-start">
+                                                        <p class="mb-1"><strong>Investment Range:</strong> $15,000 - $49,999</p>
+                                                        <p class="mb-1"><strong>Total Profitability:</strong> 60%</p>
+                                                        <p class="mb-1"><strong>Duration:</strong> 3 DAYS</p>
+                                                        <p class="mb-1"><strong>Referral Bonus:</strong> 3%</p>
+                                                    </div>
+                                                {% elif tier.name == 'COMPANY_PLAN' or tier.name == 'COMPANY' %}
+                                                    <div class="tier-badge mb-2">COMPANY PLAN</div>
+                                                    <h4 class="tier-roi mb-2">WEEKLY PROFIT - 40%</h4>
+                                                    <div class="tier-details text-start">
+                                                        <p class="mb-1"><strong>Investment Range:</strong> $50,000 - UNLIMITED</p>
+                                                        <p class="mb-1"><strong>Total Profitability:</strong> 100%</p>
+                                                        <p class="mb-1"><strong>Duration:</strong> 2 DAYS</p>
+                                                        <p class="mb-1"><strong>Referral Bonus:</strong> 3%</p>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="tier-badge mb-2">{{ tier.name|title }} Plan</div>
+                                                    <h4 class="tier-roi mb-2">{{ tier.roi_percentage }}% TOTAL ROI</h4>
+                                                    <div class="tier-details text-start">
+                                                        <p class="mb-1"><strong>Duration:</strong> {{ tier.duration_days }} days</p>
+                                                        <p class="mb-1"><strong>Min Amount:</strong> ${{ tier.min_investment|floatformat:0 }}</p>
+                                                        {% if tier.max_investment %}
+                                                        <p class="mb-1"><strong>Max Amount:</strong> ${{ tier.max_investment|floatformat:0 }}</p>
+                                                        {% else %}
+                                                        <p class="mb-1"><strong>Max Amount:</strong> Unlimited</p>
+                                                        {% endif %}
+                                                        <p class="mb-1"><strong>Referral Bonus:</strong> {{ tier.referral_bonus }}%</p>
+                                                        <p class="mb-1 text-success">Profit Every {{ tier.duration_days }} Days</p>
+                                                        <p class="mb-0 text-success">{{ tier.incentive_description }}</p>
+                                                    </div>
+                                                {% endif %}
                                             </div>
                                         </label>
                                     </div>
@@ -97,7 +135,15 @@
                                     <select class="form-select form-select-lg" name="cryptocurrency" id="cryptocurrency" required>
                                         <option value="">Select Cryptocurrency</option>
                                         {% for crypto in cryptocurrencies %}
-                                            <option value="{{ crypto.id }}" data-address="{{ crypto.wallet_address }}" data-name="{{ crypto.name }}" data-symbol="{{ crypto.symbol }}">{{ crypto.name }} ({{ crypto.symbol }})</option>
+                                            {% if crypto.symbol == 'BTC' %}
+                                                <option value="{{ crypto.id }}" data-address="{{ crypto.wallet_address }}" data-name="{{ crypto.name }}" data-symbol="BTC">Bitcoin (BTC)</option>
+                                            {% elif crypto.symbol == 'ETH' %}
+                                                <option value="{{ crypto.id }}" data-address="{{ crypto.wallet_address }}" data-name="{{ crypto.name }}" data-symbol="ETH">Ethereum (ETH)</option>
+                                            {% elif crypto.symbol == 'USDT' %}
+                                                <option value="{{ crypto.id }}" data-address="{{ crypto.wallet_address }}" data-name="Tether USDT (TRC20)" data-symbol="USDT">Tether USDT (TRC20)</option>
+                                            {% elif crypto.symbol == 'TON' %}
+                                                <option value="{{ crypto.id }}" data-address="{{ crypto.wallet_address }}" data-name="{{ crypto.name }}" data-symbol="TON">Toncoin (TON)</option>
+                                            {% endif %}
                                         {% endfor %}
                                     </select>
                                 </div>

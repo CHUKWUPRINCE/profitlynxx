@@ -131,7 +131,7 @@ def dashboard(request):
         'total_balance': user.current_balance,  # Use dynamic calculation
         'active_investments': active_investments,
         'recent_transactions': user.transactions.all()[:5],
-        'crypto_prices': CryptoPrice.objects.filter(cryptocurrency__symbol__in=['BTC', 'ETH', 'SOL', 'TON'])[:4]
+        'crypto_prices': CryptoPrice.objects.filter(cryptocurrency__symbol__in=['BTC', 'ETH', 'USDT', 'TON'])[:4]
     }
     
     return render(request, 'invest/dashboard.html', context)
@@ -292,7 +292,8 @@ def deposit(request):
         create_investment_tiers()
         
         context = {
-            'cryptocurrencies': CryptoCurrency.objects.filter(is_active=True),
+            # Only include BTC, ETH, USDT (TRC20), and TON
+            'cryptocurrencies': CryptoCurrency.objects.filter(is_active=True, symbol__in=['BTC', 'ETH', 'USDT', 'TON']),
             'investment_tiers': InvestmentTier.objects.filter(is_active=True).order_by('min_investment'),
         }
         

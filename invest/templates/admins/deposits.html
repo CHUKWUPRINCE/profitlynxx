@@ -109,10 +109,10 @@
                                 <div class="col-md-3">
                                     <select class="form-select" id="tierFilter">
                                         <option value="">All PLANS</option>
-                                        <option value="BASIC">BASIC</option>
-                                        <option value="STANDARD">STANDARD</option>
-                                        <option value="PROFESSIONAL">PROFESSIONAL</option>
-                                        <option value="ADVANCED">ADVANCED</option>
+                                        <option value="BASIC_PLAN">BASIC PLAN</option>
+                                        <option value="PROFESSIONAL_PLAN">PROFESSIONAL PLAN</option>
+                                        <option value="BUSINESS_PLAN">BUSINESS PLAN</option>
+                                        <option value="COMPANY_PLAN">COMPANY PLAN</option>
                                     </select>
                                 </div>
                                 <div class="col-md-3">
@@ -121,7 +121,7 @@
                                         <option value="BTC">Bitcoin</option>
                                         <option value="ETH">Ethereum</option>
                                         <option value="TON">TON</option>
-                                        <option value="SOL">SOLANA</option>
+                                        <option value="USDT">USDT (TRC20)</option>
                                 
                                     </select>
                                 </div>
@@ -478,14 +478,20 @@ function showDepositDetails(depositId) {
                     <h6>Deposit Information</h6>
                     <p><strong>ID:</strong> #${depositId}</p>
                     <p><strong>Status:</strong> <span class="badge bg-success">Approved</span></p>
-                    <p><strong>Amount:</strong> $100 - $2999</p>
-                    <p><strong>Investment Plan:</strong> Basic</p>
+                    <p><strong>Amount:</strong> (see actual deposit record)</p>
+                    <p><strong>Investment Plan:</strong> (see actual deposit record)</p>
+                    <ul>
+                        <li><b>BASIC PLAN:</b> $100 - $4,999 | Daily Cash Back: 10% | Duration: 24 HOURS | 3% Referral Bonus</li>
+                        <li><b>PROFESSIONAL PLAN:</b> $5,000 - $14,999 | Daily Profit: 15% | Duration: 3 DAYS | 3% Referral Bonus</li>
+                        <li><b>BUSINESS PLAN:</b> $15,000 - $49,999 | Daily Profitability: 20% | Duration: 3 DAYS | 3% Referral Bonus</li>
+                        <li><b>COMPANY PLAN:</b> $50,000 - UNLIMITED | Weekly Profit: 40% | Duration: 2 DAYS | 3% Referral Bonus</li>
+                    </ul>
                 </div>
                 <div class="col-md-6">
                     <h6>Transaction Details</h6>
-                    <p><strong>Cryptocurrency:</strong> Bitcoin (BTC)</p>
-                    <p><strong>Transaction ID:</strong> <code>abc123def456</code></p>
-                    <p><strong>Wallet Address:</strong> <code>1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</code></p>
+                    <p><strong>Cryptocurrency:</strong> (see actual deposit record)</p>
+                    <p><strong>Transaction ID:</strong> (see actual deposit record)</p>
+                    <p><strong>Wallet Address:</strong> (see actual deposit record)</p>
                 </div>
             </div>
         `;
