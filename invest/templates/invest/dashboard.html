@@ -234,6 +234,10 @@
                                     <a href="{% url 'profile' %}" class="btn btn-outline-secondary">
                                         <i class="fas fa-user me-2"></i>Update Profile
                                     </a>
+                                    <button id="copyReferralBtn" class="btn btn-outline-primary" type="button">
+                                        <i class="fas fa-link me-2"></i>Copy Referral Link
+                                    </button>
+                                    <div id="referralCopiedMsg" class="alert alert-success mt-2" style="display:none; padding: 6px 12px; font-size: 14px;">Referral link copied!</div>
                                 </div>
                             </div>
                         </div>
@@ -386,4 +390,24 @@
         <!-- container -->
 
     </div>
-{% endblock %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('copyReferralBtn');
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    var username = '{{ user.username|escapejs }}';
+                    var userId = '{{ user.id }}';
+                    var ref = username || userId;
+                    var link = `https://aspenoptions.org/register?ref=${ref}`;
+                    navigator.clipboard.writeText(link).then(function() {
+                        var msg = document.getElementById('referralCopiedMsg');
+                        if (msg) {
+                            msg.style.display = 'block';
+                            setTimeout(function() { msg.style.display = 'none'; }, 2000);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    {% endblock %}

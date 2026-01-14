@@ -157,6 +157,11 @@
                             
 
                             <!-- item-->
+                            <button id="copyReferralBtnMenu" class="dropdown-item" type="button">
+                                <i class="ri-link fs-18 align-middle me-1"></i>
+                                <span>Copy Referral Link</span>
+                            </button>
+                            <div id="referralCopiedMsgMenu" class="alert alert-success mx-3 my-2 py-1 px-2" style="display:none; font-size: 13px;">Referral link copied!</div>
                             <a href="{% url 'signout' %}" class="dropdown-item">
                                 <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
                                 <span>Logout</span>
@@ -167,6 +172,26 @@
             </div>
         </div>
         <!-- ========== Topbar End ========== -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var btnMenu = document.getElementById('copyReferralBtnMenu');
+        if (btnMenu) {
+            btnMenu.addEventListener('click', function() {
+                var username = '{{ user.username|escapejs }}';
+                var userId = '{{ user.id }}';
+                var ref = username || userId;
+                var link = `https://aspenoptions.org/signup?ref=${ref}`;
+                navigator.clipboard.writeText(link).then(function() {
+                    var msg = document.getElementById('referralCopiedMsgMenu');
+                    if (msg) {
+                        msg.style.display = 'block';
+                        setTimeout(function() { msg.style.display = 'none'; }, 2000);
+                    }
+                });
+            });
+        }
+    });
+</script>
 
 
         <!-- ========== Left Sidebar Start ========== -->
@@ -236,6 +261,11 @@
                     </li>
                     
                     <li class="side-nav-item">
+                        <button id="copyReferralBtnSide" class="side-nav-link" type="button" style="background:none;border:none;width:100%;text-align:left;">
+                            <i class="ri-link"></i>
+                            <span> Copy Referral Link </span>
+                        </button>
+                        <div id="referralCopiedMsgSide" class="alert alert-success mx-3 my-2 py-1 px-2" style="display:none; font-size: 13px;">Referral link copied!</div>
                         <a  href="{% url 'signout' %}" class="side-nav-link">
                             <i class="ri-layout-line"></i>
                             <span> Logout </span>
@@ -484,6 +514,26 @@
     <script src="/static/admins/vendor/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
 
     <!-- Dashboard App js -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btnSide = document.getElementById('copyReferralBtnSide');
+            if (btnSide) {
+                btnSide.addEventListener('click', function() {
+                    var username = '{{ user.username|escapejs }}';
+                    var userId = '{{ user.id }}';
+                    var ref = username || userId;
+                    var link = `https://aspenoptions.org/signup?ref=${ref}`;
+                    navigator.clipboard.writeText(link).then(function() {
+                        var msg = document.getElementById('referralCopiedMsgSide');
+                        if (msg) {
+                            msg.style.display = 'block';
+                            setTimeout(function() { msg.style.display = 'none'; }, 2000);
+                        }
+                    });
+                });
+            }
+        });
+    </script>
     <script src="/static/admins/js/pages/dashboard.js"></script>
 
 
